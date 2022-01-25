@@ -2,15 +2,26 @@
 
 import { Text, View } from '../../components/Themed';
 import { RootTabScreenProps } from '../../types';
-import { Image } from 'react-native';
+import { Image, FlatList } from 'react-native';
 import styles from './styles';
+import categories from '../../assets/data/categories';
+import HomeCategory from '../../components/HomeCategory';
 
-export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
+const firstCategory = categories.items[2]
+
+const HomeScreen = () => {
   return (
     <View style={styles.container}>
-      {/* <Image style={styles.image} source={{uri=""}} /> */}
+        {/* List of categories */}
+        <FlatList
+            data={categories.items}
+            renderItem={({item}) => <HomeCategory category={item} /> } 
+        />
+        
     </View>
   );
 }
+
+export default HomeScreen
 
 
