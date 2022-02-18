@@ -31,8 +31,33 @@ const styles = StyleSheet.create({
         color: 'black',
         fontWeight: 'bold'
     },
-    numberOfSeasons: {
-
+    // Button
+    playButton: {
+        backgroundColor: '#fff',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 5,
+        borderRadius: 3,
+        marginVertical: 5
+    },
+    playButtonText: {
+        color: '#000',
+        fontSize: 16,
+        fontWeight: 'bold',
+        
+    },
+    downloadButton: {
+        backgroundColor: '#2b2b2b',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 5,
+        borderRadius: 3,
+        marginVertical: 5
+    },
+    downloadButtonText: {
+        color: '#fff',
+        fontSize: 16,
+        fontWeight: 'bold',
     }
 })
 
