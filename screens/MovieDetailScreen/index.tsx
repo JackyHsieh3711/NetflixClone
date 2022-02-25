@@ -7,7 +7,8 @@ import movie from '../../assets/data/movie'
 import { AntDesign, Entypo, Feather, FontAwesome, Ionicons, MaterialIcons } from '@expo/vector-icons'
 import EpisodeItem from '../../components/EpisodeItem'
 import { Picker } from '@react-native-picker/picker'
-import { useState } from 'react'
+import React, { useState } from 'react'
+import VideoPlayer from '../../components/VideoPlayer'
 
 const firstSeason = movie.seasons.items[0]
 const firstEpisode = firstSeason.episodes.items[0]
@@ -16,13 +17,22 @@ const seasonNames = movie.seasons.items.map(season => season.name)
 
 const MovieDetailsScreen = () => {
     const [currentSeason, setCurrentSeason] = useState(firstSeason)
+    const [currentEpisode, setCurrentEpisode] = useState(firstSeason.episodes.items[0])
     return (
         <View>
-            <Image style={styles.image} source={{uri: firstEpisode.poster}} />
+            <VideoPlayer episode={currentEpisode} />
+            {/* <Image style={styles.image} source={{uri: firstEpisode.poster}} /> */}
 
             <FlatList 
                 data={currentSeason.episodes.items}
-                renderItem={({item}) => <EpisodeItem episode={item} />}
+                renderItem={({item}) => (
+                    <EpisodeItem 
+                        episode={item} 
+                        onPress={
+                            (episode) => {setCurrentEpisode(episode)}
+                        } 
+                    />
+                )}
                 style={{marginBottom: 250}}
                 ListHeaderComponent={
                 <View style={{padding: 12}}>
